@@ -22,7 +22,7 @@ public class BinarySearchFromFile {
 	Scanner scanner = new Scanner(System.in);
 	System.out.println("Enter Key: ");
 	String inputString = scanner.nextLine();
-	// Check if your word exists
+	// Check if your word exists or not.
 	BinarySearchFromFile binarySerchFromFile= new BinarySearchFromFile();
 	Arrays.sort(fileArray.toArray());
 	System.out.println(fileArray);

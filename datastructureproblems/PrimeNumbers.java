@@ -2,42 +2,70 @@ package datastructureproblems;
  import java.util.Scanner;
  import java.util.List;
  import java.util.ArrayList;
+ import java.util.Arrays;
 
 public class PrimeNumbers {
-	public PrimeNumbers(int num)
-	{
-		int i; 
-		int j;
-		
-		List<Integer> list = new ArrayList<>();
-		List<String> primeList = new ArrayList<>(), anagramList = new ArrayList<>();
+	
+	public static void main(String[] args) {
+		PrimeNumbers primeNumbers = new PrimeNumbers();
+		for (int i = 0; i <= 1000; i++) {
+			if (primeNumbers.isPrime(i)) {
+				for (int j = i; j < 1000; j++) {
+					if (i != j) {
+						if (primeNumbers.isPrime(j)) {
+							if (primeNumbers.isAnagram(String.valueOf(i), String.valueOf(j)) && primeNumbers.isPalindrome(i)) {
+								System.out.println(i + " " + j + " is prime and anagram and palindrome");
+							}
+						}
+					}
+				}
 
-		for (i = 2; i < num; i++)		
-		{        
-			for (j = 2; j < i; j++)	//check for nontrivial divisors
-			{      
-				if (i % j == 0) 	//nontrivial divisor found -> not a prime
-					break;          
 			}
-			if (j == i)            //this means the cycle above run till end
-			{					 //hence no nontrivial divisors, hence a prime
-				System.out.println(i);
-				
-				primeList.add(Integer.toString(i));
+
+		}
+
+	}
+	
+	public static boolean isPrime(int num) {
+		if (num == 0 || num == 1) {
+			return false;
+		}
+		for (int i = 2; i < num; i++) {
+			if (num % i == 0) {
+				return false;
 			}
 		}
-		System.out.println();
-		System.out.println("Prime Numbers List: "+primeList);
-	}
+		return true;
 
-	public static void main(String[] args) 
-	{
-	     Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter Range: ");
-		int num =scanner.nextInt();
-		PrimeNumbers prime = new PrimeNumbers(num);
+	}
+	
+	public boolean isPalindrome(int num) {
+		int r, sum = 0;
+		int temp = num;
+		while (num > 0) {
+			r = num % 10;
+			sum = (sum * 10) + r;
+			num = num / 10;
+		}
+		if (temp == sum) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isAnagram(String str1, String str2) {
+		char[] arr1 = str1.toCharArray();
+		char[] arr2 = str2.toCharArray();
+		if (str1.length() != str2.length()) {
+			return false;
+		} else {
+			Arrays.sort(arr1);
+			Arrays.sort(arr2);
+			if (Arrays.equals(arr1, arr2)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
-
-
-

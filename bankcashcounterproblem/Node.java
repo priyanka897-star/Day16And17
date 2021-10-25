@@ -1,0 +1,8 @@
+package bankcashcounterproblem;
+
+
+public class Node<T> {
+	
+	T data;
+	Node<T> next;
+}

@@ -1,6 +1,7 @@
 package datastructureproblems;
 
 import java.util.Scanner;
+
 public class FindYourNumber {
 	public static void main(String[] args) {
 		FindYourNumber findNumber = new FindYourNumber();
